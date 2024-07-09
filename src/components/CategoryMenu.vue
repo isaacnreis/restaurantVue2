@@ -8,7 +8,7 @@
         :class="{ active: isActive(category.id) }"
       >
         <component :is="category.icon" />
-        {{ category.label }}
+        <p>{{ category.label }}</p>
       </li>
     </ul>
   </div>
@@ -63,14 +63,14 @@ export default {
   min-width: 130px;
   height: 100vh;
   background: white;
+
   display: flex;
   align-items: center;
 
   ul {
+    list-style: none;
+    padding: 0;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
 
     li {
       display: flex;
@@ -85,17 +85,21 @@ export default {
         font-size: 14px;
         color: @dark-grey;
       }
+
       svg {
         path {
           fill: @dark-grey;
         }
       }
+
       &.active {
         background: @yellow;
         border-radius: 8px;
+
         p {
           color: black;
         }
+
         svg {
           path {
             fill: black;
@@ -105,17 +109,27 @@ export default {
     }
   }
 
-  @media @tablets {
+  @media @small-desktops {
     width: 100%;
+    max-width: 800px;
+    margin: auto;
     height: fit-content;
+
     ul {
       display: flex;
+      justify-content: space-around;
       margin: 20px;
       overflow: scroll;
-      flex-direction: row;
+
       li {
         min-width: 78px;
       }
+    }
+  }
+
+  @media @smartphones {
+    ul {
+      justify-content: unset;
     }
   }
 }

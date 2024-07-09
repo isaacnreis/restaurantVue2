@@ -3,13 +3,14 @@ import Cart from "@/components/Cart.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import Payment from "../views/Payment.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeView,
   },
   {
@@ -18,19 +19,15 @@ const routes = [
     component: Cart,
   },
   {
+    path: "/payment",
+    name: "Payment",
+    component: Payment,
+  },
+  {
     path: "/addToCart/:id",
     name: "AddToCart",
     component: AddToCart,
     props: true,
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
 ];
 
